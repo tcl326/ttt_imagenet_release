@@ -10,7 +10,7 @@ from utils.test_helpers import test
 from utils.train_helpers import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--dataroot', default='/data/datasets/imagenet/')
+parser.add_argument('--dataroot', default='../bao-steel-image/BaoDataGroupVal/')
 parser.add_argument('--shared', default=None)
 ########################################################################
 parser.add_argument('--depth', default=18, type=int)
@@ -25,6 +25,10 @@ parser.add_argument('--lr', default=0.1, type=float)
 ########################################################################
 parser.add_argument('--resume', default=None)
 parser.add_argument('--outf', default='.')
+
+########################################################################
+parser.add_argument('--rotation',
+					action='store_true')
 
 args = parser.parse_args()
 my_makedir(args.outf)

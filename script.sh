@@ -1,6 +1,6 @@
 export PYTHONPATH=$PYTHONPATH:$(pwd)
 
-python main.py --shared layer3 --group_norm 32 --workers 16 --outf results/resnet18_layer3_gn
+python main.py --shared layer3 --group_norm 32 --workers 4 --outf results/resnet18_layer3_gn
 
 CUDA_VISIBLE_DEVICES=0 python script_test.py 5 layer3 online_shuffle gn
 CUDA_VISIBLE_DEVICES=0 python script_test.py 5 layer3 slow gn

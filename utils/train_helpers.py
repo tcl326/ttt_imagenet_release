@@ -96,7 +96,7 @@ def prepare_test_data(args, use_transforms=True):
 	te_transforms_local = te_transforms if use_transforms else None	
 	if not hasattr(args, 'corruption') or args.corruption == 'original':
 		print('Test on the original test set')
-		validdir = os.path.join(args.dataroot, 'val')
+		validdir = os.path.join(args.dataroot, 'test')
 		teset = RotateImageFolder(validdir, te_transforms_local, original=False, rotation=False,
 													rotation_transform=rotation_te_transforms)
 
@@ -109,6 +109,10 @@ def prepare_test_data(args, use_transforms=True):
 	elif args.corruption == 'video':
 		validdir = os.path.join(args.dataroot, 'val')
 		teset = ImagePathFolder(validdir, te_transforms_local)
+	# elif args.corruption == 'None':
+	# 	validdir = os.path.join(args.dataroot, 'val')
+	# 	teset = RotateImageFolder(validdir, te_transforms_local, original=False, rotation=False,
+	# 												rotation_transform=rotation_te_transforms)
 	else:
 		raise Exception('Corruption not found!')
 		
@@ -125,6 +129,8 @@ def adjust_learning_rate(optimizer, epoch, args):
 		param_group['lr'] = lr
 
 def plot_epochs(all_err_cls, all_err_ssh, fname):
+	import matplotlib
+	matplotlib.use('agg')
 	import matplotlib.pyplot as plt
 	plt.plot(np.asarray(all_err_cls)*100, color='r', label='supervised')
 	plt.plot(np.asarray(all_err_ssh)*100, color='b', label='self-supervised')

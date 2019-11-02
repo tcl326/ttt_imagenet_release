@@ -9,12 +9,12 @@ from utils.train_helpers import *
 parser = argparse.ArgumentParser()
 parser.add_argument('--level', default=0, type=int)
 parser.add_argument('--corruption', default='original')
-parser.add_argument('--dataroot', default='/data/datasets/imagenet/')
+parser.add_argument('--dataroot', default='../bao-steel-image/BaoDataGroupVal/')
 parser.add_argument('--shared', default=None)
 ########################################################################
 parser.add_argument('--depth', default=18, type=int)
 parser.add_argument('--group_norm', default=0, type=int)
-parser.add_argument('--batch_size', default=256, type=int)
+parser.add_argument('--batch_size', default=32, type=int)
 parser.add_argument('--workers', default=8, type=int)
 ########################################################################
 parser.add_argument('--resume', default=None)
